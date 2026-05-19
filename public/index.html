@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tile Studio</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <!-- Left Panel -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>Tile Studio</h1>
+        <p>Choose a tile type</p>
+      </div>
+      <nav class="tile-nav">
+        <button data-tile="triangles" class="tile-btn active">
+          <span class="tile-icon">▲</span>
+          <span>Triangles</span>
+        </button>
+        <button data-tile="squares" class="tile-btn">
+          <span class="tile-icon">■</span>
+          <span>Squares</span>
+        </button>
+        <button data-tile="hexagons" class="tile-btn">
+          <span class="tile-icon">⬡</span>
+          <span>Hexagons</span>
+        </button>
+      </nav>
+        <!-- Tiles / Start controls -->
+        <div class="level-control">
+          <span class="level-label">Tiles ×</span>
+          <input type="number" id="levelDisp" value="1" min="1" />
+          <button id="levelDown">-</button>
+          <button id="levelUp">+</button>
+        </div>
+        <div class="start-control">
+          <span class="start-label">Start at</span>
+          <input type="number" id="startDisp" value="0" />
+          <button id="startDown">-</button>
+          <button id="startUp">+</button>
+        </div>
+        <!-- Layers panel -->
+        <div class="numbers-panel">
+          <div class="section-title">Layers</div>
+          <div class="layers-list" id="layersList">
+            <div class="layer-item" data-layer="primes" draggable="true">
+              <span class="layer-handle">⠿</span>
+              <span class="layer-name">Primes</span>
+              <input type="checkbox" class="layer-tog" id="filterPrimes" checked />
+              <button class="layer-color-swatch" data-layer="primes" title="Change color" style="background:#c52727">
+              </button>
+              <button class="layer-eye" data-target="filterPrimes" title="Hide/Show">👁</button>
+            </div>
+            <div class="layer-item" data-layer="fibonacci" draggable="true">
+              <span class="layer-handle">⠿</span>
+              <span class="layer-name">Fibonacci</span>
+              <input type="checkbox" class="layer-tog" id="fibToggle" />
+              <button class="layer-color-swatch" data-layer="fibonacci" title="Change color" style="background:#2d64d9">
+              </button>
+              <button class="layer-eye" data-target="fibToggle" title="Hide/Show">👁</button>
+            </div>
+            <div class="layer-item" data-layer="all" draggable="true">
+              <span class="layer-handle">⠿</span>
+              <span class="layer-name">All Numbers</span>
+              <input type="checkbox" class="layer-tog" id="filterAll" checked />
+              <button class="layer-color-swatch" data-layer="all" title="Change color" style="background:#363636">
+              </button>
+              <button class="layer-eye" data-target="filterAll" title="Hide/Show">👁</button>
+            </div>
+          </div>
+        </div>
+      <div class="sidebar-footer">
+        <!-- Settings dropdown -->
+        <div class="settings-dropdown">
+          <button id="settingsBtn" class="settings-btn">⚙️ Settings</button>
+          <div class="settings-panel" id="settingsPanel">
+            <div class="settings-section">
+              <div class="section-title">Appearance</div>
+              <label class="filter-label">
+                <span>Tile Labels</span>
+                <input type="checkbox" id="showNums" checked />
+                <span class="toggle-track"><span class="toggle-fill"></span><span class="toggle-thumb"></span></span>
+              </label>
+              <label class="filter-label">
+                <span>Clockwise ↻</span>
+                <input type="checkbox" id="spiralCw" checked />
+                <span class="toggle-track"><span class="toggle-fill"></span><span class="toggle-thumb"></span></span>
+              </label>
+              <label class="filter-label">
+                <span>Ω-luminance</span>
+                <input type="checkbox" id="luminanceToggle" />
+                <span class="toggle-track"><span class="toggle-fill"></span><span class="toggle-thumb"></span></span>
+              </label>
+              <label class="filter-label">
+                <span>Gradient</span>
+                <input type="checkbox" id="gradientToggle" checked />
+                <span class="toggle-track"><span class="toggle-fill"></span><span class="toggle-thumb"></span></span>
+              </label>
+              <label class="filter-label">
+                <span>Grid</span>
+                <input type="checkbox" id="gridToggle" />
+                <span class="toggle-track"><span class="toggle-fill"></span><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
+            <div class="settings-section">
+              <div class="section-title">Optimization</div>
+              <label class="filter-label">
+                <span>Screenshot 📸</span>
+                <input type="checkbox" id="screenshotToggle" />
+                <span class="toggle-track"><span class="toggle-fill"></span><span class="toggle-thumb"></span></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Canvas Area -->
+    <main class="canvas-area">
+      <canvas id="tileCanvas"></canvas>
+      <div class="hint">Scroll to zoom | Drag to pan | Zoom: <span id="zoomVal">100%</span></div>
+      <button id="resetBtn" class="reset-btn" title="Reset zoom & position">↺</button>
+    </main>
+  </div>
+
+  <input type="color" id="layerColorPicker" class="hidden-color-picker" value="#c52727" />
+  <script src="/js/tiles.js"></script>
+</body>
+</html>

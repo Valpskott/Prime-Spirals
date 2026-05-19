@@ -1,0 +1,17 @@
+{
+  "name": "prime-spirals",
+  "version": "1.0.0",
+  "description": "Tile Studio — geometric tile patterns",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": ["tiles", "geometry", "tessellation"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
